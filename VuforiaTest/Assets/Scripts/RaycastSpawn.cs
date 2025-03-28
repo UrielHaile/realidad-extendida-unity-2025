@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RaycastSpawn : MonoBehaviour
 {
     public GameObject sphere;
-
+    public NavMeshAgent agent;
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) 
@@ -16,6 +17,7 @@ public class RaycastSpawn : MonoBehaviour
                 Debug.Log(hit.transform.position);
                 Debug.LogWarning(hit.point);
                 Instantiate(sphere, hit.point, Quaternion.identity);
+                agent.destination = hit.point;
             }
         }
     }
